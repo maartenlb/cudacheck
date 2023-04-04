@@ -56,7 +56,7 @@ else:
 # test if CUDA streams are working
 if torch.cuda.is_available():
     with torch.cuda.stream(torch.cuda.Stream()):
-        x = torch.randn(10000, 10000).cuda()
+        x = torch.randn(10000, 10000, requires_grad=True).cuda()
         y = torch.randn(10000, 10000).cuda()
         z = torch.matmul(x, y)
         z.sum().backward()
